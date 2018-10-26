@@ -13,7 +13,7 @@ y = labelencoder_y.fit_transform(y)
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.0, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
@@ -44,4 +44,4 @@ y_pred = (y_pred > 0.5)
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
-y_pred
+print(y_pred)
