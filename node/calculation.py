@@ -45,13 +45,14 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 # from sklearn.metrics import confusion_matrix
 # cm = confusion_matrix(y_test, y_pred)
 some_nonsense_variable = 1
-try:
-    input = pd.read_csv('input.csv')
-    input1 = input.iloc[:,:].values
-    y_pred = classifier.predict(input1)
-    y_pred = (y_pred > 0.5)
-    os.remove('input.csv')
-    f = open('output.txt','w')
-    f.write(y_pred[0][0])
-except: 
-    some_nonsense_variable = (some_nonsense_variable^1)
+while True:
+    try:
+        input = pd.read_csv('input.csv')
+        input1 = input.iloc[:,:].values
+        y_pred = classifier.predict(input1)
+        y_pred = (y_pred > 0.5)
+        os.remove('input.csv')
+        f = open('output.txt','w')
+        f.write(y_pred[0][0])
+    except: 
+        some_nonsense_variable = (some_nonsense_variable^1)
