@@ -48,12 +48,13 @@ some_nonsense_variable = 1
 while True:
     try:
         inp = pd.read_csv('input.csv')
-        print("HELLO")
+        # print("HELLO")
         input1 = inp.iloc[:,:].values
         y_pred = classifier.predict(input1)
         y_pred = (y_pred > 0.5)
         os.remove('input.csv')
         f = open('output.txt','w')
+        print(y_pred[0][0])
         f.write(y_pred[0][0])
     except: 
         some_nonsense_variable = (some_nonsense_variable^1)
