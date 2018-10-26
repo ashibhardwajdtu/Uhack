@@ -21,8 +21,13 @@ if(document.ready()){
   arr[18] = document.getElementById("l19").value;
   arr[19] = document.getElementById("l20").value;
   arr[20] = document.getElementById("l21").value;
-
+  var flag = 0;
   arr.forEach(if(arr[i] == ""){
-    document.getElementById(check).disable;
+    document.getElementById(check).disabled = true;
+    flag = 1;
+    break;
   })
+  if (flag == 1){
+    
+  }
 }
