@@ -47,6 +47,7 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 some_nonsense_variable = 1
 while True:
     try:
+        print("HELLO")
         inp = pd.read_csv('input.csv')
         input1 = inp.iloc[:,:].values
         y_pred = classifier.predict(input1)
