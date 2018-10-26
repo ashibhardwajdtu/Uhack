@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 import os
 import pandas as pd
 
@@ -46,16 +47,30 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 # cm = confusion_matrix(y_test, y_pred)
 some_nonsense_variable = 1
 while True:
+    some_check = 1
+    inp = 1
     try:
         inp = pd.read_csv('input.csv')
+        # inp = np.loadtxt('input.csv',delimiter=',')
+        some_check = 1
+        # f.write(y_pred)
+    except: 
+        some_check = 0
+    if some_check == 1:
+        os.remove("input.csv")
         # print("HELLO")
-        print(inp)
+        # inp = np.transpose(inp)
+        # np.size(inp)
+        # print(inp)
+        # input1 = inp
         input1 = inp.iloc[:,:].values
         y_pred = classifier.predict(input1)
-        y_pred = (y_pred > 0.5)
-        os.remove('input.csv')
+        # y_pred = (y_pred > 0.5)
         f = open('output.txt','w')
-        # print(y_pred)
-        f.write(y_pred)
-    except: 
-        some_nonsense_variable = (some_nonsense_variable^1)
+        # sys.stdout = open('output.txt','w')
+        print(y_pred)
+        f.write(str(y_pred[0][0]))
+        f.close()
+        print(inp)
+        print(input1)
+    
