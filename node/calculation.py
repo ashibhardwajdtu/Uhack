@@ -54,7 +54,7 @@ while True:
         y_pred = (y_pred > 0.5)
         os.remove('input.csv')
         f = open('output.txt','w')
-        print(y_pred[0][0])
+        print(y_pred)
         f.write(y_pred[0][0])
     except: 
         some_nonsense_variable = (some_nonsense_variable^1)
