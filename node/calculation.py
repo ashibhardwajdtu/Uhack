@@ -47,8 +47,8 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 some_nonsense_variable = 1
 while True:
     try:
-        input = pd.read_csv('input.csv')
-        input1 = input.iloc[:,:].values
+        inp = pd.read_csv('input.csv')
+        input1 = inp.iloc[:,:].values
         y_pred = classifier.predict(input1)
         y_pred = (y_pred > 0.5)
         os.remove('input.csv')
