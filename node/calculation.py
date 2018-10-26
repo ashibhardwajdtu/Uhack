@@ -49,6 +49,7 @@ while True:
     try:
         inp = pd.read_csv('input.csv')
         # print("HELLO")
+        print(inp)
         input1 = inp.iloc[:,:].values
         y_pred = classifier.predict(input1)
         y_pred = (y_pred > 0.5)
