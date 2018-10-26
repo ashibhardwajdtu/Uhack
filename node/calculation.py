@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import pandas as pd
 
 # Importing the dataset
@@ -19,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.0, rando
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
+# X_test = sc.transform(X_test)
 
 import keras
 from keras.models import Sequential
@@ -38,10 +39,23 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 
 classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 
-y_pred = classifier.predict(X_test)
-y_pred = (y_pred > 0.5)
+# y_pred = classifier.predict(X_test)
+# y_pred = (y_pred > 0.5)
 
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
-
-y_pred
+# from sklearn.metrics import confusion_matrix
+# cm = confusion_matrix(y_test, y_pred)
+some_nonsense_variable = 1
+while True:
+    try:
+        inp = pd.read_csv('input.csv')
+        # print("HELLO")
+        print(inp)
+        input1 = inp.iloc[:,:].values
+        y_pred = classifier.predict(input1)
+        y_pred = (y_pred > 0.5)
+        os.remove('input.csv')
+        f = open('output.txt','w')
+        # print(y_pred)
+        f.write(y_pred)
+    except: 
+        some_nonsense_variable = (some_nonsense_variable^1)

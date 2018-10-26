@@ -6,11 +6,12 @@ router.get('/', function(req, res, next) {
   console.log("HELLO WORLD");
 });
 router.post('/', function(req, res, next) {
-    a = req.body.data[0];
-    b = req.body.data[1];
-    console.log(a);
-    console.log(b);
-    fs.writeFile("input.txt",a + " " + b,(err)=>{
+    arr = "";
+    for(i = 0; i < 21; ++i){
+        arr = arr + req.body.data[i];
+        if(i+1 < 21)arr = arr+','
+    }
+    fs.writeFile("input.csv",arr,(err)=>{
         if(err){
             console.log("SOME ERROR");
         }
