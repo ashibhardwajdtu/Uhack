@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import pandas as pd
 
 # Importing the dataset
@@ -13,7 +14,7 @@ y = labelencoder_y.fit_transform(y)
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.0, random_state = 0)
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
@@ -38,10 +39,19 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 
 classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 
-y_pred = classifier.predict(X_test)
-y_pred = (y_pred > 0.5)
+# y_pred = classifier.predict(X_test)
+# y_pred = (y_pred > 0.5)
 
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
-
-print(y_pred)
+some_nonsense_variable = 1
+try:
+    input = pd.read_csv('input.csv')
+    input1 = input.iloc[:,:].values
+    y_pred = classifier.predict(input1)
+    y_pred = (y_pred > 0.5)
+    os.remove('input.csv')
+    f = open('output.txt','w')
+    f.write(y_pred[0][0])
+except: 
+    some_nonsense_variable = (some_nonsense_variable^1)
