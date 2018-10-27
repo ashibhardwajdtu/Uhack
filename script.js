@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  
+});
+
+function load(){
   var arr = [];
   arr[0] = document.getElementById("f1").value;
   arr[1] = document.getElementById("f2").value;
@@ -24,11 +28,11 @@ $(document).ready(function(){
   var flag = 1;
   for(i = 0; i < 21; ++i){
     if(arr[i] != ""){
-
+  
       document.getElementById("Check").disabled = false;
       document.getElementById("no-input").display = false;
       flag = 0;
-//      break;
+  //      break;
     }
   }
   var str = "data=";
@@ -36,10 +40,7 @@ $(document).ready(function(){
     str = str + arr[i] + ","
   }
   str = str + arr[20];
-
-});
-
-function load(){
+  console.log("CALLING LOAD");
   //   var xhttp = new XMLHttpRequest();
   //   xhttp.onreadystatechange = function(){
     //     if (this.readyState == 4 && this.status == 200){
@@ -50,7 +51,8 @@ function load(){
       //   xhttp.send("data",arr[]);
       // }
       $.getJSON("http://ec2-54-82-174-187.compute-1.amazonaws.com:3000/api?"+str,(result)=>{
-          console.log(result.result);
+          console.log(result);
        }
-    );
+      );
+      console.log("http://ec2-54-82-174-187.compute-1.amazonaws.com:3000/api?"+str);
   }
