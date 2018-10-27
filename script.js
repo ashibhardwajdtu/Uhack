@@ -1,8 +1,11 @@
 $(document).ready(function(){
-  
+    $('#result-zero').hide();
+    $('#result-one').hide();
 });
 
 function load(){
+  $('#result-one').hide();
+  $('#result-zero').hide();
   var arr = [];
   arr[0] = document.getElementById("f1").value;
   arr[1] = document.getElementById("f2").value;
@@ -28,7 +31,7 @@ function load(){
   var flag = 1;
   for(i = 0; i < 21; ++i){
     if(arr[i] != ""){
-  
+
       document.getElementById("Check").disabled = false;
       document.getElementById("no-input").display = false;
       flag = 0;
@@ -52,7 +55,11 @@ function load(){
       // }
       $.getJSON("http://ec2-54-82-174-187.compute-1.amazonaws.com:3000/api?"+str,(result)=>{
           console.log(result);
+          if (result.status == "success"){
+            if (result.result == 1)$('#result-one').show();
+            if (result.result == 0)$('#result-zero').show();
+          }
        }
       );
-      console.log("http://ec2-54-82-174-187.compute-1.amazonaws.com:3000/api?"+str);
+//      console.log("http://ec2-54-82-174-187.compute-1.amazonaws.com:3000/api?"+str);
   }

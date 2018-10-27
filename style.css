@@ -13,6 +13,7 @@ body {
 center {
     display: block;
     text-align: -webkit-center;
+    padding-bottom: 25px;
 }
 
 div {
